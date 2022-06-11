@@ -14,6 +14,15 @@
 		CB04737728547D0000C8D305 /* iOS_Horizontal_CollectionView_Calendar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB04737528547D0000C8D305 /* iOS_Horizontal_CollectionView_Calendar.xcdatamodeld */; };
 		CB04737928547D0100C8D305 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB04737828547D0100C8D305 /* Assets.xcassets */; };
 		CB04737C28547D0100C8D305 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB04737A28547D0100C8D305 /* LaunchScreen.storyboard */; };
+		CB0473852854837300C8D305 /* HomescreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0473842854837300C8D305 /* HomescreenController.swift */; };
+		CB0473882854878700C8D305 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0473872854878700C8D305 /* DateCell.swift */; };
+		CB04738B28548BA800C8D305 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB04738A28548BA800C8D305 /* Extensions.swift */; };
+		CB04738D28548D5E00C8D305 /* CellBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB04738C28548D5E00C8D305 /* CellBuilder.swift */; };
+		CB04738F285497EC00C8D305 /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB04738E285497EC00C8D305 /* LayoutBuilder.swift */; };
+		CB0473922854ACE500C8D305 /* TopHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0473912854ACE500C8D305 /* TopHeaderCell.swift */; };
+		CB0473942854BC1600C8D305 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0473932854BC1600C8D305 /* MonthMetadata.swift */; };
+		CB0473962854DA7900C8D305 /* MonthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0473952854DA7900C8D305 /* MonthTemplate.swift */; };
+		CB0473982854DCB700C8D305 /* ChangeMonthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0473972854DCB700C8D305 /* ChangeMonthController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +35,15 @@
 		CB04737828547D0100C8D305 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB04737B28547D0100C8D305 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB04737D28547D0100C8D305 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB0473842854837300C8D305 /* HomescreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenController.swift; sourceTree = "<group>"; };
+		CB0473872854878700C8D305 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		CB04738A28548BA800C8D305 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		CB04738C28548D5E00C8D305 /* CellBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellBuilder.swift; sourceTree = "<group>"; };
+		CB04738E285497EC00C8D305 /* LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutBuilder.swift; sourceTree = "<group>"; };
+		CB0473912854ACE500C8D305 /* TopHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeaderCell.swift; sourceTree = "<group>"; };
+		CB0473932854BC1600C8D305 /* MonthMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
+		CB0473952854DA7900C8D305 /* MonthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTemplate.swift; sourceTree = "<group>"; };
+		CB0473972854DCB700C8D305 /* ChangeMonthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMonthController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +76,10 @@
 		CB04736B28547D0000C8D305 /* iOS-Horizontal-CollectionView-Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				CB0473902854A95700C8D305 /* Model */,
+				CB0473862854876D00C8D305 /* View */,
+				CB0473832854835700C8D305 /* Controller */,
+				CB04738928548B8D00C8D305 /* Utils */,
 				CB04736C28547D0000C8D305 /* AppDelegate.swift */,
 				CB04736E28547D0000C8D305 /* SceneDelegate.swift */,
 				CB04737028547D0000C8D305 /* ViewController.swift */,
@@ -68,6 +90,51 @@
 				CB04737528547D0000C8D305 /* iOS_Horizontal_CollectionView_Calendar.xcdatamodeld */,
 			);
 			path = "iOS-Horizontal-CollectionView-Calendar";
+			sourceTree = "<group>";
+		};
+		CB0473832854835700C8D305 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB0473992854DCBC00C8D305 /* Builder */,
+				CB0473842854837300C8D305 /* HomescreenController.swift */,
+				CB0473972854DCB700C8D305 /* ChangeMonthController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CB0473862854876D00C8D305 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB0473872854878700C8D305 /* DateCell.swift */,
+				CB0473912854ACE500C8D305 /* TopHeaderCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB04738928548B8D00C8D305 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CB04738A28548BA800C8D305 /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CB0473902854A95700C8D305 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CB0473932854BC1600C8D305 /* MonthMetadata.swift */,
+				CB0473952854DA7900C8D305 /* MonthTemplate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CB0473992854DCBC00C8D305 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				CB04738C28548D5E00C8D305 /* CellBuilder.swift */,
+				CB04738E285497EC00C8D305 /* LayoutBuilder.swift */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +208,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0473982854DCB700C8D305 /* ChangeMonthController.swift in Sources */,
+				CB0473962854DA7900C8D305 /* MonthTemplate.swift in Sources */,
 				CB04737128547D0000C8D305 /* ViewController.swift in Sources */,
+				CB04738F285497EC00C8D305 /* LayoutBuilder.swift in Sources */,
+				CB0473882854878700C8D305 /* DateCell.swift in Sources */,
 				CB04736D28547D0000C8D305 /* AppDelegate.swift in Sources */,
+				CB04738D28548D5E00C8D305 /* CellBuilder.swift in Sources */,
 				CB04737728547D0000C8D305 /* iOS_Horizontal_CollectionView_Calendar.xcdatamodeld in Sources */,
 				CB04736F28547D0000C8D305 /* SceneDelegate.swift in Sources */,
+				CB0473852854837300C8D305 /* HomescreenController.swift in Sources */,
+				CB0473922854ACE500C8D305 /* TopHeaderCell.swift in Sources */,
+				CB04738B28548BA800C8D305 /* Extensions.swift in Sources */,
+				CB0473942854BC1600C8D305 /* MonthMetadata.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
