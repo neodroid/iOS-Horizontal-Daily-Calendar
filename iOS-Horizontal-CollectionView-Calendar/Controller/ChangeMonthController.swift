@@ -45,8 +45,6 @@ class ChangeMonthController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         view.backgroundColor = .white
         
         monthPick.delegate = self

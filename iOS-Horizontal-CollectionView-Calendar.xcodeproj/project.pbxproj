@@ -23,6 +23,7 @@
 		CB0473942854BC1600C8D305 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0473932854BC1600C8D305 /* MonthMetadata.swift */; };
 		CB0473962854DA7900C8D305 /* MonthTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0473952854DA7900C8D305 /* MonthTemplate.swift */; };
 		CB0473982854DCB700C8D305 /* ChangeMonthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0473972854DCB700C8D305 /* ChangeMonthController.swift */; };
+		CB04739B28559CBB00C8D305 /* CalendarLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB04739A28559CBB00C8D305 /* CalendarLogic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		CB0473932854BC1600C8D305 /* MonthMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
 		CB0473952854DA7900C8D305 /* MonthTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTemplate.swift; sourceTree = "<group>"; };
 		CB0473972854DCB700C8D305 /* ChangeMonthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMonthController.swift; sourceTree = "<group>"; };
+		CB04739A28559CBB00C8D305 /* CalendarLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLogic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			children = (
 				CB0473932854BC1600C8D305 /* MonthMetadata.swift */,
 				CB0473952854DA7900C8D305 /* MonthTemplate.swift */,
+				CB04739A28559CBB00C8D305 /* CalendarLogic.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB04739B28559CBB00C8D305 /* CalendarLogic.swift in Sources */,
 				CB0473982854DCB700C8D305 /* ChangeMonthController.swift in Sources */,
 				CB0473962854DA7900C8D305 /* MonthTemplate.swift in Sources */,
 				CB04737128547D0000C8D305 /* ViewController.swift in Sources */,

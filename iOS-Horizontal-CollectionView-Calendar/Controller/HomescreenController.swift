@@ -22,7 +22,7 @@ class HomescreenController: UIViewController, MonthChangeDelegate{
     private var monthData: MonthMetadata?
     
     //test
-    public var string = "7/2022"
+    public var string = "6/2022"
     
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: makeLayout())
@@ -40,12 +40,14 @@ class HomescreenController: UIViewController, MonthChangeDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-       
+        
     }
     
-    
-    
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        scrollToDate()
+    }
     
     //MARK: - Selectors
     
@@ -57,13 +59,23 @@ class HomescreenController: UIViewController, MonthChangeDelegate{
         }
         let currData = Calendar.current.dateComponents([.year, .month], from: selectedMonth)
         
-        VC.currPickedMonth = currData.month ?? 7
+        VC.currPickedMonth = currData.month ?? 1
         VC.currPickedYear = currData.year ?? 2022
         self.present(VC, animated: true, completion: nil)
     }
     
     
     //MARK: - Helpers
+    
+    func scrollToDate() {
+        dateFormatter.dateFormat = "dd"
+        let todayDateScroll = dateFormatter.string(from: Date())
+        if Int(todayDateScroll) ?? 4 > 4 {
+            collectionView.scrollToItem(at: (NSIndexPath(item: (Int(todayDateScroll) ?? 1) - 3, section: 1) as IndexPath), at: [], animated: true)
+        }
+        
+        
+    }
     
     func userEnterMonthAndYear(month: String, year:String) {
         string = "\(month)/\(year)"
@@ -77,7 +89,7 @@ class HomescreenController: UIViewController, MonthChangeDelegate{
         selectedMonth = dateFormatter.date(from: string) ?? Date()
         
         if let metadata = try? monthMetadata(for: selectedMonth) {
-          monthData = metadata
+            monthData = metadata
         }
         
         view.backgroundColor = .white
@@ -85,12 +97,14 @@ class HomescreenController: UIViewController, MonthChangeDelegate{
         collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor,left: view.leftAnchor,bottom: view.safeAreaLayoutGuide.bottomAnchor,right: view.rightAnchor)
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        
+        
+        
     }
     
-
+    
     func makeLayout() -> UICollectionViewLayout {
-        
-        
         let layout = UICollectionViewCompositionalLayout { (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             
             if section == 0 {
@@ -100,14 +114,13 @@ class HomescreenController: UIViewController, MonthChangeDelegate{
             }
             
         }
-       
         return layout
         
     }
     
     func showChangeMonth(){
         let VC = ChangeMonthController()
-
+        
         if let sheet = VC.sheetPresentationController {
             sheet.detents = [.medium()]
         }
@@ -127,22 +140,26 @@ extension HomescreenController: UICollectionViewDelegate, UICollectionViewDataSo
         }else {
             return monthData?.numberOfDays ?? 1
         }
-       
+        
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        let pickedMonthAndYear = Calendar.current.dateComponents([.year, .month], from: selectedMonth)
+        let pickedMonth = pickedMonthAndYear.month
+        let pickedYear = pickedMonthAndYear.year
+        
         if indexPath.section == 0 {
-            
-            let pickedMonth = Calendar.current.dateComponents([.year, .month], from: selectedMonth).month
-            let pickedYear = Calendar.current.dateComponents([.year, .month], from: selectedMonth).year
             let cell = CellBuilder.getTopHeaderCell(collectionView: collectionView, indexPath: indexPath, month: pickedMonth ?? 1, year: pickedYear ?? 2022)
             return cell
         }else {
-            let cell = CellBuilder.getDateCell(collectionView: collectionView, indexPath: indexPath, startDay: monthData?.firstDayWeekday ?? 0)
+            let cell = CellBuilder.getDateCell(collectionView: collectionView, indexPath: indexPath, startDay: monthData?.firstDayWeekday ?? 0, monthYear: "\(pickedMonth!)/\(pickedYear!)")
             return cell
         }
     }
+    
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -170,22 +187,22 @@ extension HomescreenController: UICollectionViewDelegate, UICollectionViewDataSo
 extension HomescreenController {
     
     func monthMetadata(for baseDate: Date) throws -> MonthMetadata {
-      guard
-        let numberOfDaysInMonth = calendar.range(
-          of: .day,
-          in: .month,
-          for: baseDate)?.count,
-        let firstDayOfMonth = calendar.date(
-          from: calendar.dateComponents([.year, .month], from: baseDate))
+        guard
+            let numberOfDaysInMonth = calendar.range(
+                of: .day,
+                in: .month,
+                for: baseDate)?.count,
+            let firstDayOfMonth = calendar.date(
+                from: calendar.dateComponents([.year, .month], from: baseDate))
         else {
-          fatalError()
-      }
-      let firstDayWeekday = calendar.component(.weekday, from: firstDayOfMonth)
+            fatalError()
+        }
+        let firstDayWeekday = calendar.component(.weekday, from: firstDayOfMonth)
         
-      return MonthMetadata(
-        numberOfDays: numberOfDaysInMonth,
-        firstDay: firstDayOfMonth,
-        firstDayWeekday: firstDayWeekday)
+        return MonthMetadata(
+            numberOfDays: numberOfDaysInMonth,
+            firstDay: firstDayOfMonth,
+            firstDayWeekday: firstDayWeekday)
     }
     
     

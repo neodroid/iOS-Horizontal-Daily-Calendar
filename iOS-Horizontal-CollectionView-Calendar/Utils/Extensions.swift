@@ -93,7 +93,7 @@ extension UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
     
-    static let primaryBlue = UIColor.rgb(red: 61, green: 127, blue: 240)
+    static let smokeLessBlue = UIColor.rgb(red: 61, green: 127, blue: 240)
 }
 
 extension UIViewController {

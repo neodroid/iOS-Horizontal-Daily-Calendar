@@ -11,6 +11,9 @@ public class DateCell: UICollectionViewCell {
     
     //MARK: - Properties
     
+    let dateFormatter = DateFormatter()
+    
+    
     var dayLabel = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
     var currDay = 0
     
@@ -47,6 +50,15 @@ public class DateCell: UICollectionViewCell {
         return label
     }()
     
+    var blueDot: UIView = {
+        let view = UIView()
+        view.backgroundColor = .smokeLessBlue
+        view.layer.cornerRadius = 5
+        view.setDimensions(width: 10, height: 10)
+        view.isHidden = true
+        return view
+    }()
+    
     //MARK: - Lifecycle
     
     public override init(frame: CGRect) {
@@ -73,11 +85,28 @@ public class DateCell: UICollectionViewCell {
         container.addSubview(subtitleLabel)
         subtitleLabel.anchor(top:titleLabel.bottomAnchor,left: container.leftAnchor,right: container.rightAnchor ,paddingTop: 10)
         
+        container.addSubview(blueDot)
+        blueDot.anchor(top: container.bottomAnchor, paddingTop: 15)
+        blueDot.centerX(inView: self)
+        
     }
     
-    public func setup(title: Int, subtitle: String) {
+    public func setup(title: Int, subtitle: String, monthYear: String) {
         self.currDay = title
-        self.titleLabel.text = dayLabel[currDay]
+        self.titleLabel.text = dayLabel[title]
         self.subtitleLabel.text = subtitle
+        
+        
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let today = dateFormatter.string(from: Date())
+        let uiToday = dateFormatter.date(from: "\(subtitle)/\(monthYear)")
+        let stringUiToday = dateFormatter.string(from: uiToday!)
+        
+        if today == stringUiToday {
+            blueDot.isHidden = false
+        }else {
+            blueDot.isHidden = true
+        }
+        
     }
 }
